@@ -10,7 +10,6 @@ Interactive search, demo case entry, and live federated retrieval.
 import os
 import json
 import time
-import uuid
 from pathlib import Path
 import streamlit as st
 import pandas as pd
@@ -379,7 +378,7 @@ with top_col2:
 st.warning("Public demo with de-identified example cases. Their synthetic status has not been independently verified. Do not enter real patient information. Outputs are for research demonstration and are not medical advice or a substitute for professional care.")
 tab_board, tab_ingest, tab_vault = st.tabs([
     "🤝 Tab 1: Federated Consultation & Clinical Board",
-    "📥 Tab 2: Patient Entry (Demo Only)",
+    "📥 Tab 2: Clinical Ingestion Portal (Doctor Entry)",
     "🏛️ Tab 3: Local GEO Knowledge Vault (Audit)"
 ])
 
@@ -697,84 +696,190 @@ with tab_board:
 # TAB 2: CLINICAL INGESTION PORTAL (DOCTOR CASE ENTRY)
 # ==============================================================================
 with tab_ingest:
-    st.markdown("<h4 style='margin: 0 0 6px 0; font-weight: 700;'>Add a Patient Case to the Demo Index</h4>", unsafe_allow_html=True)
-    st.info("Demo only. Add fictional or de-identified cases. Submitted cases are saved to this public demo's hospital case store and search index, where other visitors may see or retrieve them. Never enter real patient information.")
+    st.markdown("<h4 style='margin: 0 0 6px 0; font-weight: 700;'>Patient Encounter Ingestion & AgentGEO Optimizer</h4>", unsafe_allow_html=True)
+    st.warning("Public demo: use fictional or de-identified examples only. Uploaded documents and submitted cases are processed by this public app and added to the shared demo index. Never upload real patient information.")
+    st.caption(f"Enter clinical findings into **{st.session_state.active_hospital}**. AgentGEO will repair narrative prose into structured, citable evidence before vector indexing.")
 
-    with st.form("demo_patient_entry"):
-        st.markdown("**Patient profile**")
-        profile_cols = st.columns(4)
-        with profile_cols[0]:
-            demo_age = st.number_input("Age", min_value=0, max_value=115, value=0, key="demo_age")
-        with profile_cols[1]:
-            demo_gender = st.selectbox("Gender", ["Select", "Female", "Male", "Other"], key="demo_gender")
-        with profile_cols[2]:
-            demo_department = st.selectbox("Department", ["Cardiology", "Nephrology", "Endocrinology", "Internal Medicine"], key="demo_department")
-        with profile_cols[3]:
-            demo_outcome = st.selectbox("Outcome", ["Improved", "Stable", "Unresponsive", "Adverse Reaction"], key="demo_outcome")
+    f_data = st.session_state.ingest_fields
 
-        demo_diagnosis = st.text_input("Primary diagnosis", placeholder="Example: Stage 3 chronic kidney disease", key="demo_diagnosis")
-        demo_comorbidities = st.text_input("Comorbidities", placeholder="Separate entries with commas", key="demo_comorbidities")
-        demo_allergies = st.text_input("Allergies", placeholder="Separate entries with commas", key="demo_allergies")
+    # Form Reset Bar
+    c_btn_reset, _ = st.columns([1, 4])
+    with c_btn_reset:
+        if st.button("🔄 Reset / Clear Form", use_container_width=True):
+            clear_ingestion_form()
+            st.rerun()
 
-        st.markdown("**Initial observations (optional)**")
-        vitals_cols = st.columns(4)
-        with vitals_cols[0]:
-            demo_bp = st.text_input("Blood pressure", placeholder="128/78 mmHg", key="demo_bp")
-        with vitals_cols[1]:
-            demo_hr = st.text_input("Heart rate", placeholder="72 bpm", key="demo_hr")
-        with vitals_cols[2]:
-            demo_creatinine = st.text_input("Creatinine", placeholder="1.1 mg/dL", key="demo_creatinine")
-        with vitals_cols[3]:
-            demo_egfr = st.text_input("eGFR", placeholder="68 mL/min", key="demo_egfr")
+    # Main Ingestion Form Card (Clean, User-Driven)
+    with st.container():
+        st.markdown('<div class="geo-card">', unsafe_allow_html=True)
 
-        demo_symptoms = st.text_input("Symptoms", placeholder="Describe the presentation", key="demo_symptoms")
-        demo_intervention = st.text_input("Interventions or medications", placeholder="Separate entries with commas", key="demo_intervention")
-        demo_effective = st.text_input("Effective medications", placeholder="Separate entries with commas", key="demo_effective")
-        demo_contraindicated = st.text_input("Withheld or contraindicated medications", placeholder="Separate entries with commas", key="demo_contraindicated")
-        demo_notes = st.text_area("Clinical narrative", placeholder="Enter a fictional clinical summary", height=110, key="demo_notes")
-        preview_clicked = st.form_submit_button("Add case to demo index", type="primary", use_container_width=True)
+        # 1. Multimodal Report Upload & Interactive Extraction
+        st.markdown("**1. Upload Clinical Document / Lab PDF (Optional):**")
+        uploaded_doc = st.file_uploader("Upload discharge summary, lab PDF, or report image", type=["pdf", "txt", "png", "jpg", "jpeg"], label_visibility="collapsed")
 
-    if preview_clicked:
-        st.session_state.pop("demo_optimization_preview", None)
-        if demo_age < 1 or demo_gender == "Select" or not demo_diagnosis.strip() or not demo_notes.strip():
-            st.warning("Enter an age, gender, primary diagnosis, and clinical narrative to create a preview.")
-        else:
-            case_preview = {
-                "patient_id": f"DEMO-USER-{uuid.uuid4().hex[:10].upper()}",
-                "hospital_id": st.session_state.active_hospital,
-                "department": demo_department,
-                "demographics": {"age": int(demo_age), "gender": demo_gender},
-                "primary_diagnosis": demo_diagnosis.strip(),
-                "comorbidities": [item.strip() for item in demo_comorbidities.split(",") if item.strip()],
-                "allergies": [item.strip() for item in demo_allergies.split(",") if item.strip()],
-                "longitudinal_timeline": [{
-                    "day": 1,
-                    "symptoms": demo_symptoms,
-                    "vitals": {"bp": demo_bp, "hr": demo_hr, "creatinine": demo_creatinine, "eGFR": demo_egfr},
-                    "intervention": demo_intervention,
-                }],
-                "treatment_outcome": {
-                    "status": demo_outcome,
-                    "effective_medications": [item.strip() for item in demo_effective.split(",") if item.strip()],
-                    "adverse_or_contraindicated_drugs": [item.strip() for item in demo_contraindicated.split(",") if item.strip()],
-                    "clinical_notes_raw": demo_notes.strip(),
-                },
-            }
-            preview_result = current_node.ingest_patient_case(case_preview)
-            preview_result.pop("original_raw_text", None)
-            st.session_state.demo_optimization_preview = preview_result
+        c_up1, c_up2 = st.columns([1, 3])
+        with c_up1:
+            if st.button("⚡ Auto-Extract Vitals", use_container_width=True, disabled=(uploaded_doc is None)):
+                if uploaded_doc is not None:
+                    parsed = parse_clinical_document(uploaded_doc.getvalue(), uploaded_doc.name)
+                    st.session_state.extracted_vitals = parsed["detected_vitals"]
+                    ev = parsed["detected_vitals"]
+                    if ev.get("bp"): f_data["bp_d1"] = ev["bp"]
+                    if ev.get("hr"): f_data["hr_d1"] = ev["hr"]
+                    if ev.get("creatinine"): f_data["cr_d1"] = ev["creatinine"]
+                    if ev.get("egfr"): f_data["egfr_d1"] = ev["egfr"]
+                    if ev.get("age"): f_data["age"] = ev["age"]
+                    if ev.get("gender"): f_data["gender"] = ev["gender"]
+                    if ev.get("primary_dx"): f_data["primary_dx"] = ev["primary_dx"]
+                    st.success(f"Extracted vitals via {parsed['engine_used']}!")
+                    st.rerun()
+        with c_up2:
+            if st.session_state.extracted_vitals:
+                ev = st.session_state.extracted_vitals
+                st.markdown(f"<span class='geo-badge geo-badge-dept'>BP: {ev.get('bp','-')}</span> <span class='geo-badge geo-badge-dept'>HR: {ev.get('hr','-')}</span> <span class='geo-badge geo-badge-renal'>Cr: {ev.get('creatinine','-')}</span> <span class='geo-badge geo-badge-renal'>eGFR: {ev.get('egfr','-')}</span>", unsafe_allow_html=True)
 
-    preview_result = st.session_state.get("demo_optimization_preview")
-    if preview_result:
-        st.success("Case added to the selected hospital's demo case store and search index.")
-        result_cols = st.columns(3)
-        result_cols[0].metric("Raw SNR", f"{preview_result['raw_snr']:.3f}")
-        result_cols[1].metric("Optimized SNR", f"{preview_result['optimized_snr']:.3f}", f"+{preview_result['improvement_pct']}%")
-        result_cols[2].metric("Repairs applied", len(preview_result["repairs_applied"]))
-        st.markdown(f"**Diagnosed issues:** {', '.join(preview_result['diagnosed_flaws']) or 'None'}")
-        st.markdown(f"**Repairs:** {', '.join(preview_result['repairs_applied'])}")
-        with st.expander("View optimized evidence preview", expanded=True):
-            st.code(preview_result["optimized_evidence_chunk"], language="markdown")
+        st.markdown("---")
+
+        # 2. Patient Profile & Demographics
+        st.markdown("**2. Patient Demographics & Diagnostic Profile:**")
+        c1, c2, c3, c4 = st.columns([1, 1, 1, 1])
+        with c1:
+            p_id = st.text_input("Patient ID:", value=f_data["patient_id"], placeholder="e.g., HA-CARD-201")
+            f_data["patient_id"] = p_id
+        with c2:
+            dept_idx = ["Cardiology", "Nephrology", "Endocrinology", "Internal Medicine"].index(f_data["department"]) if f_data["department"] in ["Cardiology", "Nephrology", "Endocrinology", "Internal Medicine"] else 0
+            dept = st.selectbox("Department:", ["Cardiology", "Nephrology", "Endocrinology", "Internal Medicine"], index=dept_idx)
+            f_data["department"] = dept
+        with c3:
+            age = st.number_input("Age (Years):", 0, 115, value=int(f_data["age"]))
+            f_data["age"] = age
+        with c4:
+            g_idx = 0 if f_data["gender"] == "Male" else 1
+            gender = st.selectbox("Gender:", ["Male", "Female", "Other"], index=g_idx)
+            f_data["gender"] = gender
+
+        c5, c6 = st.columns(2)
+        with c5:
+            p_dx = st.text_input("Primary Diagnosis:", value=f_data["primary_dx"], placeholder="e.g., Unstable Angina, Stage 3 CKD, Heart Failure...")
+            f_data["primary_dx"] = p_dx
+            allergies = st.text_input("Documented Allergies:", value=f_data["allergies"], placeholder="e.g., Penicillin, Sulfa, NSAIDs, or NKDA")
+            f_data["allergies"] = allergies
+        with c6:
+            comorbs = st.multiselect(
+                "Comorbidities & Risk Factors:",
+                options=[
+                    "Type-2 Diabetes Mellitus", "Chronic Kidney Disease Stage 3", "Chronic Kidney Disease Stage 4",
+                    "Hypertension", "Atrial Fibrillation", "Hyperlipidemia", "Heart Failure", "Gout", "Obesity", "Dyslipidemia"
+                ],
+                default=f_data["comorbidities"]
+            )
+            f_data["comorbidities"] = comorbs
+            attending_md = st.text_input("Attending Physician:", value=f_data["physician"], placeholder="e.g., Dr. Ramesh Sharma, MD")
+            f_data["physician"] = attending_md
+
+        st.markdown("---")
+
+        # 3. Longitudinal Progression
+        st.markdown("**3. Longitudinal Trajectory & Biomarkers:**")
+        t_col1, t_col2 = st.columns(2)
+        with t_col1:
+            st.markdown("<div style='font-size:12px; font-weight:700; color:#2563EB;'>INITIAL OBSERVATION (DAY 1)</div>", unsafe_allow_html=True)
+            v_bp1 = st.text_input("BP (Day 1):", value=f_data["bp_d1"], placeholder="e.g., 158/92 mmHg")
+            v_hr1 = st.text_input("HR (Day 1):", value=f_data["hr_d1"], placeholder="e.g., 84 bpm")
+            v_cr1 = st.text_input("Creatinine (Day 1):", value=f_data["cr_d1"], placeholder="e.g., 1.8 mg/dL")
+            v_egfr1 = st.text_input("eGFR (Day 1):", value=f_data["egfr_d1"], placeholder="e.g., 38 mL/min")
+            symp1 = st.text_input("Symptoms (Day 1):", value=f_data["symp_d1"], placeholder="e.g., Exertional chest tightness, peripheral edema...")
+            rx1 = st.text_input("Intervention / Medications (Day 1):", value=f_data["rx_d1"], placeholder="e.g., Aspirin 150mg daily, Atorvastatin 40mg nightly...")
+            f_data["bp_d1"], f_data["hr_d1"], f_data["cr_d1"], f_data["egfr_d1"], f_data["symp_d1"], f_data["rx_d1"] = v_bp1, v_hr1, v_cr1, v_egfr1, symp1, rx1
+
+        with t_col2:
+            st.markdown("<div style='font-size:12px; font-weight:700; color:#2563EB;'>FOLLOW-UP OBSERVATION (DAY 4)</div>", unsafe_allow_html=True)
+            v_bp4 = st.text_input("BP (Day 4):", value=f_data["bp_d4"], placeholder="e.g., 136/82 mmHg")
+            v_hr4 = st.text_input("HR (Day 4):", value=f_data["hr_d4"], placeholder="e.g., 72 bpm")
+            v_cr4 = st.text_input("Creatinine (Day 4):", value=f_data["cr_d4"], placeholder="e.g., 1.8 mg/dL")
+            v_egfr4 = st.text_input("eGFR (Day 4):", value=f_data["egfr_d4"], placeholder="e.g., 38 mL/min")
+            symp4 = st.text_input("Symptoms (Day 4):", value=f_data["symp_d4"], placeholder="e.g., Angina stabilized, exertional capacity improved...")
+            rx4 = st.text_input("Intervention / Medications (Day 4):", value=f_data["rx_d4"], placeholder="e.g., Metoprolol succinate 25mg OD (ACEi withheld)...")
+            f_data["bp_d4"], f_data["hr_d4"], f_data["cr_d4"], f_data["egfr_d4"], f_data["symp_d4"], f_data["rx_d4"] = v_bp4, v_hr4, v_cr4, v_egfr4, symp4, rx4
+
+        st.markdown("---")
+
+        # 4. Clinical Narrative & Speech Dictation
+        st.markdown("**4. Physician Clinical Narrative & Outcomes:**")
+        n_col1, n_col2 = st.columns([1, 1])
+        with n_col1:
+            st_idx = ["Improved", "Stable", "Unresponsive", "Adverse Reaction"].index(f_data["outcome_status"]) if f_data["outcome_status"] in ["Improved", "Stable", "Unresponsive", "Adverse Reaction"] else 0
+            status = st.selectbox("Outcome Status:", ["Improved", "Stable", "Unresponsive", "Adverse Reaction"], index=st_idx)
+            f_data["outcome_status"] = status
+            effective = st.text_input("Effective Medications:", value=f_data["effective_meds"], placeholder="e.g., Aspirin, Atorvastatin, Metoprolol")
+            f_data["effective_meds"] = effective
+            contra = st.text_input("Withheld / Contraindicated Medications:", value=f_data["contraindicated_meds"], placeholder="e.g., Lisinopril (withheld due to borderline eGFR)")
+            f_data["contraindicated_meds"] = contra
+        with n_col2:
+            render_speech_dictation_widget("ingest_dictate", height=105, placeholder="Dictate physician narrative notes...")
+
+        raw_notes = st.text_area(
+            "Physician Narrative Notes (Raw Unstructured EHR Text):",
+            value=f_data["notes_raw"],
+            placeholder="Type or dictate doctor narrative describing patient presentation, clinical reasoning, and therapy response...",
+            height=85
+        )
+        f_data["notes_raw"] = raw_notes
+
+        # Submit & Optimize Button
+        st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
+        if st.button("🚀 Optimize Record & Index into Local Node", type="primary", use_container_width=True):
+            if not p_id.strip():
+                st.warning("Please enter a Patient ID.")
+            elif not p_dx.strip():
+                st.warning("Please enter a Primary Diagnosis.")
+            elif not raw_notes.strip():
+                st.warning("Please enter physician narrative notes.")
+            else:
+                timeline_data = [
+                    {"day": 1, "symptoms": symp1, "vitals": {"bp": v_bp1, "hr": v_hr1, "creatinine": v_cr1, "eGFR": v_egfr1}, "intervention": rx1},
+                    {"day": 4, "symptoms": symp4, "vitals": {"bp": v_bp4, "hr": v_hr4, "creatinine": v_cr4, "eGFR": v_egfr4}, "intervention": rx4}
+                ]
+                case_obj = {
+                    "hospital_id": st.session_state.active_hospital,
+                    "patient_id": p_id,
+                    "department": dept,
+                    "attending_physician": attending_md or "Dr. Attending, MD",
+                    "demographics": {"age": age, "gender": gender},
+                    "primary_diagnosis": p_dx,
+                    "comorbidities": comorbs,
+                    "allergies": [a.strip() for a in allergies.split(",") if a.strip()],
+                    "longitudinal_timeline": timeline_data,
+                    "treatment_outcome": {
+                        "status": status,
+                        "effective_medications": [m.strip() for m in effective.split(",") if m.strip()],
+                        "adverse_or_contraindicated_drugs": [c.strip() for c in contra.split(",") if c.strip()],
+                        "clinical_notes_raw": raw_notes
+                    }
+                }
+
+                with st.spinner("Executing AgentGEO diagnostic audit (BLUF, Tables, Badges) and indexing..."):
+                    opt = current_node.ingest_patient_case(case_obj)
+
+                st.success(f"✓ Case {p_id} successfully repaired and indexed into {st.session_state.active_hospital}!")
+
+                # Live Interactive SNR Delta Card
+                st.markdown('<div class="geo-card" style="border-left: 4px solid #10B981; margin-top: 10px;">', unsafe_allow_html=True)
+                k1, k2, k3 = st.columns(3)
+                with k1:
+                    st.metric("Raw SNR (Prose)", f"{opt['raw_snr']:.3f}")
+                with k2:
+                    st.metric("Optimized SNR (GEO)", f"{opt['optimized_snr']:.3f}", f"+{opt['improvement_pct']}%")
+                with k3:
+                    st.metric("Repairs Applied", len(opt["repairs_applied"]))
+
+                st.markdown(f"**Flaws Diagnosed**: `{', '.join(opt['diagnosed_flaws'])}`")
+                st.markdown(f"**Repairs Applied**: `{', '.join(opt['repairs_applied'])}`")
+                with st.expander("📄 Inspect De-Identified Evidence Chunk", expanded=True):
+                    st.markdown(opt["optimized_evidence_chunk"], unsafe_allow_html=True)
+                st.markdown('</div>', unsafe_allow_html=True)
+
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # ==============================================================================
 # TAB 3: LOCAL GEO KNOWLEDGE VAULT
