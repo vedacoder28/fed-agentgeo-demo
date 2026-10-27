@@ -1,0 +1,82 @@
+[
+  {
+    "guideline_id": "GUIDE-KDIGO-2024-CKD",
+    "title": "KDIGO 2024 Clinical Practice Guideline for the Management of Chronic Kidney Disease",
+    "issuing_body": "Kidney Disease: Improving Global Outcomes (KDIGO)",
+    "recommended_regimen": "1. First-line therapy includes an SGLT2 inhibitor (Dapagliflozin 10mg or Empagliflozin 10mg) for patients with eGFR >= 20 mL/min/1.73m2 and uACR >= 200 mg/g.\n2. Concomitant RAS inhibitor (ACEi or ARB) titrated to maximally tolerated labeled dose.\n3. Add non-steroidal mineralocorticoid receptor antagonist (Finerenone 10-20mg OD) if persistent albuminuria and serum potassium <= 4.8 mEq/L.",
+    "contraindications": "Do not initiate SGLT2i if eGFR < 20 mL/min (though can be continued until dialysis once started). Dual combination of ACEi + ARB is strictly contraindicated due to acute kidney injury and hyperkalemia. Avoid Metformin if eGFR < 30 mL/min.",
+    "evidence_text": "Evidence Level 1A from DAPA-CKD, EMPA-KIDNEY, and FIDELIO-DKD trials demonstrating significant relative risk reductions in renal disease progression (31-39%) and all-cause cardiovascular death in patients with comorbid CKD and diabetes."
+  },
+  {
+    "guideline_id": "GUIDE-KDIGO-2023-BP",
+    "title": "KDIGO 2023 Clinical Practice Guideline for Blood Pressure Management in Chronic Kidney Disease",
+    "issuing_body": "Kidney Disease: Improving Global Outcomes (KDIGO)",
+    "recommended_regimen": "Target systolic blood pressure of < 120 mmHg when tolerated, measured using standardized office BP measurement. ACE-inhibitors or ARBs are first-line for patients with CKD and high albuminuria (uACR > 300 mg/g).",
+    "contraindications": "Avoid dropping DBP < 60 mmHg in elderly patients with extensive coronary artery disease. Concomitant direct renin inhibitors with ACEi/ARBs are strictly contraindicated.",
+    "evidence_text": "Supported by the SPRINT trial CKD sub-analysis showing that intensive blood pressure control (SBP < 120 mmHg) confers significant survival benefit and cardiovascular event reduction compared to standard targets."
+  },
+  {
+    "guideline_id": "GUIDE-KDIGO-2022-DIAB",
+    "title": "KDIGO 2022 Clinical Practice Guideline for Diabetes Management in CKD",
+    "issuing_body": "KDIGO & ADA Consensus Statement",
+    "recommended_regimen": "Glycemic monitoring using HbA1c individualized from < 6.5% to < 8.0% based on hypoglycemia risk and CKD severity. Metformin + SGLT2i as first-line pharmacotherapy; GLP-1 receptor agonist with proven CVD benefit added as second-line.",
+    "contraindications": "Metformin dose must be reduced to 1000mg/day when eGFR is 30-44 mL/min and discontinued when eGFR < 30 mL/min. Sulfonylureas with active renal metabolites (e.g., Glyburide) are contraindicated due to prolonged hypoglycemia.",
+    "evidence_text": "High-quality randomized trial evidence establishes that comprehensive multifactorial glycemic and hemodynamic optimization halts diabetic microvascular and macrovascular end-organ deterioration."
+  },
+  {
+    "guideline_id": "GUIDE-ACCAHA-2024-CAD",
+    "title": "2024 ACC/AHA Guideline for the Management of Patients With Chronic Coronary Disease and Angina",
+    "issuing_body": "American College of Cardiology / American Heart Association",
+    "recommended_regimen": "First-line anti-ischemic therapy: Cardioselective beta-blocker (Metoprolol succinate, Bisoprolol, or Carvedilol) and/or Dihydropyridine Calcium Channel Blocker. Add secondary antianginals (Ranolazine, Long-acting Nitrates, or Ivabradine) for refractory symptoms. Antiplatelet monotherapy (Aspirin 81-100mg daily) plus high-intensity statin (Atorvastatin 80mg or Rosuvastatin 40mg).",
+    "contraindications": "Non-selective beta-blockers in patients with severe reactive airway disease/asthma. Short-acting sublingual nifedipine without beta-blocker due to reflex tachycardia. Ranolazine in severe hepatic impairment or concurrent strong CYP3A4 inhibitors.",
+    "evidence_text": "Class 1 recommendation: Beta-blockers reduce myocardial oxygen demand and improve event-free survival in post-infarction and chronic ischemic syndromes. Ranolazine selectively inhibits late sodium current without depressing hemodynamics."
+  },
+  {
+    "guideline_id": "GUIDE-ACCAHA-2022-HF",
+    "title": "2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure",
+    "issuing_body": "AHA / ACC / Heart Failure Society of America",
+    "recommended_regimen": "Guideline-Directed Medical Therapy (GDMT) 4-Pillar Foundation for HFrEF (LVEF <= 40%):\n1. ARNI (Sacubitril/Valsartan) preferred over ACEi/ARB.\n2. Evidence-based Beta-blocker (Carvedilol, Metoprolol succinate, or Bisoprolol).\n3. Mineralocorticoid Receptor Antagonist (Spironolactone or Eplerenone).\n4. SGLT2 Inhibitor (Dapagliflozin 10mg or Empagliflozin 10mg) regardless of diabetic status.",
+    "contraindications": "Sacubitril/Valsartan must never be administered within 36 hours of an ACE-inhibitor (angioedema risk). Spironolactone is contraindicated if baseline serum potassium > 5.0 mEq/L or eGFR < 30 mL/min. Non-dihydropyridine CCBs (Diltiazem/Verapamil) contraindicated in HFrEF.",
+    "evidence_text": "PARADIGM-HF, DAPA-HF, and EMPEROR-Reduced demonstrate that simultaneous initiation of all four GDMT pillars yields a 73% relative reduction in 2-year cardiovascular mortality compared to conventional historical therapy."
+  },
+  {
+    "guideline_id": "GUIDE-ACCAHA-2023-AFIB",
+    "title": "2023 ACC/AHA/ACCP/HRS Guideline for the Diagnosis and Management of Atrial Fibrillation",
+    "issuing_body": "American College of Cardiology / Heart Rhythm Society",
+    "recommended_regimen": "Direct Oral Anticoagulants (DOACs: Apixaban, Rivaroxaban, Edoxaban, Dabigatran) recommended over Warfarin in eligible patients with CHA2DS2-VASc score >= 2 (males) or >= 3 (females). Rate control target resting HR < 80-100 bpm with beta-blockers or non-dihydropyridine CCBs.",
+    "contraindications": "DOACs contraindicated in moderate-to-severe mitral stenosis or mechanical prosthetic valves. Dabigatran contraindicated in CrCl < 15 mL/min. Non-dihydropyridine CCBs contraindicated in decompensated systolic heart failure.",
+    "evidence_text": "Meta-analyses of ARISTOTLE, RE-LY, ROCKET-AF, and ENGAGE AF-TIMI 48 confirm that DOACs reduce intracranial hemorrhage by over 50% compared to dose-adjusted Warfarin with equivalent or superior stroke prevention."
+  },
+  {
+    "guideline_id": "GUIDE-ADA-2024-SOC",
+    "title": "ADA Standards of Care in Diabetes \u2014 2024 (Cardiorenal Comorbidity Chapter)",
+    "issuing_body": "American Diabetes Association (ADA)",
+    "recommended_regimen": "In adults with T2D and established ASCVD, heart failure, or CKD: SGLT2 inhibitor and/or GLP-1 receptor agonist with proven cardiovascular benefit should be included in the glucose-lowering regimen independent of baseline HbA1c or Metformin use.",
+    "contraindications": "Discontinue SGLT2i 3-4 days prior to elective major surgery or during acute severe illness to prevent euglycemic diabetic ketoacidosis. Avoid GLP-1 RAs in personal or family history of medullary thyroid carcinoma or Multiple Endocrine Neoplasia type 2 (MEN 2).",
+    "evidence_text": "Class A evidence: Multiple large-scale cardiovascular outcome trials (CVOTs) including LEADER, SUSTAIN-6, EMPA-REG, and DECLARE-TIMI 58 establish profound cardiorenal protective benefits beyond glycemic control alone."
+  },
+  {
+    "guideline_id": "GUIDE-ADA-2024-RENAL",
+    "title": "ADA 2024 Standards of Care: Chronic Kidney Disease and Risk Management",
+    "issuing_body": "American Diabetes Association (ADA)",
+    "recommended_regimen": "Screening for diabetic kidney disease annually with urinary albumin-to-creatinine ratio (uACR) and serum creatinine/eGFR. Maximize ACEi or ARB in hypertensive patients with uACR >= 30 mg/g. Add Finerenone for CKD with persistent albuminuria despite maximally tolerated ACEi/ARB.",
+    "contraindications": "Do not discontinue ACEi/ARB for mild serum creatinine elevations (< 30% increase above baseline) in the absence of volume depletion. Routine monitoring of serum potassium required when combining Finerenone with RAAS blockade.",
+    "evidence_text": "FIDELITY pooled analysis (13,026 patients) demonstrated significant reductions in composite renal outcomes (HR 0.77) and cardiovascular death or nonfatal MI/stroke (HR 0.86) with Finerenone in DKD."
+  },
+  {
+    "guideline_id": "GUIDE-ESC-2023-ACS",
+    "title": "2023 ESC Guidelines for the Management of Acute Coronary Syndromes",
+    "issuing_body": "European Society of Cardiology (ESC)",
+    "recommended_regimen": "Dual Antiplatelet Therapy (DAPT) consisting of Aspirin (150-300mg load, 75-100mg OD) plus a potent P2Y12 inhibitor (Prasugrel 60mg load, 10mg OD or Ticagrelor 180mg load, 90mg BID) maintained for 12 months post-ACS unless high bleeding risk dictates earlier de-escalation.",
+    "contraindications": "Prasugrel is strictly contraindicated in patients with a prior history of transient ischemic attack (TIA) or stroke. Clopidogrel is reserved for cases where potent P2Y12 inhibitors are contraindicated or unaffordable.",
+    "evidence_text": "TRITON-TIMI 38 and PLATO clinical trials show superiority of Prasugrel and Ticagrelor over Clopidogrel in preventing recurrent ischemic events and stent thrombosis without excess overall mortality."
+  },
+  {
+    "guideline_id": "GUIDE-KDIGO-2024-ANEMIA",
+    "title": "KDIGO Clinical Practice Guideline for Anemia in Chronic Kidney Disease",
+    "issuing_body": "Kidney Disease: Improving Global Outcomes (KDIGO)",
+    "recommended_regimen": "Initiate Erythropoiesis-Stimulating Agents (ESAs) when hemoglobin is between 9.0 and 10.0 g/dL to avoid transfusions and symptoms. Target hemoglobin maintenance between 10.0 and 11.5 g/dL. Ensure iron repletion (TSAT > 20%, Ferritin > 100 ng/mL for non-dialysis CKD) prior to and during ESA therapy.",
+    "contraindications": "Targeting hemoglobin > 11.5 - 12.0 g/dL is explicitly contraindicated due to heightened risks of ischemic stroke, venous thromboembolism, and cardiovascular mortality shown in CHOIR and TREAT trials.",
+    "evidence_text": "Extensive randomized controlled trials (TREAT, CREATE, CHOIR) demonstrate that complete normalization of hemoglobin in CKD increases composite cardiovascular events and arterial thrombosis without quality of life improvement."
+  }
+]

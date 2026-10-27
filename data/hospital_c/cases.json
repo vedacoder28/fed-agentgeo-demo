@@ -1,0 +1,1082 @@
+[
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-041",
+    "department": "Cardiology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 66,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Unstable Angina Pectoris with Advanced Renal Decline",
+    "comorbidities": [
+      "Type-2 Diabetes Mellitus",
+      "CKD Stage 3b (eGFR 33)",
+      "Hypertension"
+    ],
+    "allergies": [
+      "Penicillin",
+      "ACE inhibitors (severe cough and angioedema)"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Progressive retrosternal chest tightness at rest, lasting 15 minutes, diaphoresis.",
+        "vitals": {
+          "bp": "160/94 mmHg",
+          "hr": "88 bpm",
+          "creatinine": "2.1 mg/dL",
+          "eGFR": "33 mL/min",
+          "hba1c": "8.4%"
+        },
+        "intervention": "Aspirin 150mg daily, Clopidogrel 75mg daily, Atorvastatin 20mg nightly."
+      },
+      {
+        "day": 3,
+        "symptoms": "Chest discomfort stabilized with sublingual glyceryl trinitrate prn. Renal panel steady.",
+        "vitals": {
+          "bp": "140/84 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "2.1 mg/dL",
+          "eGFR": "33 mL/min"
+        },
+        "intervention": "Added Carvedilol 6.25mg BID (hepatically cleared beta blocker preferred in renal impairment)."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Aspirin 150mg daily",
+        "Clopidogrel 75mg daily",
+        "Carvedilol 6.25mg BID",
+        "Atorvastatin 20mg nightly"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Lisinopril / Enalapril (angioedema and CKD-3b contraindication)"
+      ],
+      "clinical_notes_raw": "High-risk unstable angina with advanced CKD. ACE inhibitors absolutely contraindicated due to angioedema history. Beta blockade tailored using hepatically metabolized Carvedilol without renal accumulation."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-042",
+    "department": "Cardiology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 72,
+      "gender": "Female"
+    },
+    "primary_diagnosis": "Decompensated Systolic Heart Failure with Renal Dysfunction",
+    "comorbidities": [
+      "Hypertension",
+      "Chronic Kidney Disease Stage 3",
+      "Type-2 Diabetes"
+    ],
+    "allergies": [
+      "Sulfa Drugs"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Severe orthopnea, 3-pillow requirement, elevated BNP 1840 pg/mL. Bilateral wet crackles.",
+        "vitals": {
+          "bp": "150/88 mmHg",
+          "hr": "92 bpm",
+          "creatinine": "1.9 mg/dL",
+          "eGFR": "34 mL/min"
+        },
+        "intervention": "Ethacrynic acid 50mg IV (non-sulfa loop diuretic substitute), Metoprolol 25mg OD."
+      },
+      {
+        "day": 4,
+        "symptoms": "Diuresis 3.2L negative balance, orthopnea resolved, lungs clear to auscultation.",
+        "vitals": {
+          "bp": "124/76 mmHg",
+          "hr": "70 bpm",
+          "creatinine": "1.9 mg/dL",
+          "eGFR": "34 mL/min"
+        },
+        "intervention": "Oral Ethacrynic acid 50mg daily maintenance, initiated Empagliflozin 10mg daily."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Ethacrynic acid 50mg OD",
+        "Metoprolol succinate 25mg OD",
+        "Empagliflozin 10mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Furosemide / Bumetanide (strictly avoided due to severe sulfonamide allergy)"
+      ],
+      "clinical_notes_raw": "Severe congestive heart failure in sulfa-allergic patient with cardiorenal syndrome. Loop diuresis achieved using non-sulfa ethacrynic acid without allergic precipitation."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-043",
+    "department": "Cardiology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 60,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Post-Coronary Artery Bypass Graft (CABG) Angina Recurrence",
+    "comorbidities": [
+      "Hypercholesterolemia",
+      "Diabetes Mellitus"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Exertional retrosternal heaviness 4 years post-CABG. Saphenous graft occlusion suspected.",
+        "vitals": {
+          "bp": "136/84 mmHg",
+          "hr": "78 bpm",
+          "creatinine": "1.2 mg/dL",
+          "eGFR": "70 mL/min"
+        },
+        "intervention": "Aspirin 81mg OD, Ticagrelor 90mg BID, Nicorandil 10mg BID, Atorvastatin 80mg OD."
+      },
+      {
+        "day": 5,
+        "symptoms": "Angina frequency minimized with potassium channel activator Nicorandil.",
+        "vitals": {
+          "bp": "122/76 mmHg",
+          "hr": "68 bpm",
+          "creatinine": "1.1 mg/dL",
+          "eGFR": "72 mL/min"
+        },
+        "intervention": "Continued dual mechanism nitrate/K-ATP opener."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Aspirin 81mg OD",
+        "Nicorandil 10mg BID",
+        "Ticagrelor 90mg BID",
+        "Atorvastatin 80mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Phosphodiesterase-5 inhibitors (Sildenafil strictly contraindicated with Nicorandil/nitrates)"
+      ],
+      "clinical_notes_raw": "Refractory post-CABG angina successfully relieved by dual antiplatelet regimen augmented with Nicorandil. Clear warning issued against PDE5 inhibitor co-administration."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-044",
+    "department": "Cardiology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 75,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Symptomatic Bradycardia - Sick Sinus Syndrome",
+    "comorbidities": [
+      "Hypertension",
+      "Mild Vascular Dementia"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Recurrent syncopal episodes, pauses of 3.8 seconds on telemetry.",
+        "vitals": {
+          "bp": "146/72 mmHg",
+          "hr": "38 bpm",
+          "creatinine": "1.2 mg/dL",
+          "eGFR": "60 mL/min"
+        },
+        "intervention": "Discontinued all AV nodal blocking drugs, implanted permanent dual-chamber pacemaker (DDDR)."
+      },
+      {
+        "day": 3,
+        "symptoms": "No further dizziness or pauses. Pacing threshold 0.5V at 0.4ms.",
+        "vitals": {
+          "bp": "130/78 mmHg",
+          "hr": "70 bpm (paced)",
+          "creatinine": "1.1 mg/dL",
+          "eGFR": "62 mL/min"
+        },
+        "intervention": "Prescribed Losartan 50mg for blood pressure control without rate-slowing effects."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Permanent Pacemaker",
+        "Losartan 50mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Beta-blockers, Verapamil, Diltiazem, Digoxin (strictly contraindicated pre-pacing)"
+      ],
+      "clinical_notes_raw": "Intrinsic sinus nodal failure resulting in symptomatic syncope. Permanent transvenous pacemaker implantation provided definitive therapeutic resolution."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-045",
+    "department": "Cardiology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 68,
+      "gender": "Female"
+    },
+    "primary_diagnosis": "Hypertrophic Cardiomyopathy (Non-Obstructive)",
+    "comorbidities": [
+      "Hypertension"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Exertional dyspnea, mild chest discomfort, asymmetric septal hypertrophy 18mm.",
+        "vitals": {
+          "bp": "132/80 mmHg",
+          "hr": "84 bpm",
+          "creatinine": "0.9 mg/dL",
+          "eGFR": "74 mL/min"
+        },
+        "intervention": "Initiated Metoprolol succinate 50mg OD, titrating to resting HR 55-60 bpm."
+      },
+      {
+        "day": 14,
+        "symptoms": "Diastolic filling improved, heart rate 58 bpm, exercise tolerance restored.",
+        "vitals": {
+          "bp": "118/72 mmHg",
+          "hr": "58 bpm",
+          "creatinine": "0.9 mg/dL",
+          "eGFR": "74 mL/min"
+        },
+        "intervention": "Maintained high-dose beta-blocker."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Metoprolol succinate 50mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Digoxin (positive inotrope contraindicated in HCM)",
+        "High-dose vasodilators"
+      ],
+      "clinical_notes_raw": "Hypertrophic cardiomyopathy managed with negative inotropic beta blockade to lengthen ventricular diastolic relaxation and fill times."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-046",
+    "department": "Cardiology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 61,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Vasospastic (Prinzmetal) Angina",
+    "comorbidities": [
+      "Migraine",
+      "Raynaud's Disease"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Early morning rest chest pain at 4 AM, transient ST elevation on ECG with normal coronary arteries.",
+        "vitals": {
+          "bp": "128/78 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "0.9 mg/dL",
+          "eGFR": "88 mL/min"
+        },
+        "intervention": "Diltiazem 180mg daily, Amlodipine 5mg nightly, sublingual NTG as rescue."
+      },
+      {
+        "day": 7,
+        "symptoms": "No early morning awakening with chest tightness. Vasospasms abolished.",
+        "vitals": {
+          "bp": "118/74 mmHg",
+          "hr": "68 bpm",
+          "creatinine": "0.9 mg/dL",
+          "eGFR": "88 mL/min"
+        },
+        "intervention": "Avoided all non-selective beta-blockers which provoke alpha-adrenergic spasm."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Diltiazem CD 180mg OD",
+        "Amlodipine 5mg nocte"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Propranolol / non-selective beta-blockers (provoke unopposed coronary alpha-vasoconstriction)"
+      ],
+      "clinical_notes_raw": "Coronary vasospasm confirmed with transient ischemic ST shifts. Abolished using high-affinity calcium channel antagonist dual therapy."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-047",
+    "department": "Cardiology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 70,
+      "gender": "Female"
+    },
+    "primary_diagnosis": "Takotsubo Cardiomyopathy (Stress-Induced Apical Ballooning)",
+    "comorbidities": [
+      "Anxiety Disorder",
+      "Osteopenia"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Acute substernal chest pain after severe emotional bereavement. LVEF 30% with apical ballooning.",
+        "vitals": {
+          "bp": "112/68 mmHg",
+          "hr": "88 bpm",
+          "creatinine": "0.9 mg/dL",
+          "eGFR": "72 mL/min"
+        },
+        "intervention": "Carvedilol 3.125mg BID, low-dose Lisinopril 2.5mg OD, supportive cardiac care."
+      },
+      {
+        "day": 21,
+        "symptoms": "Repeat echocardiogram shows dramatic recovery of apical contractility; LVEF 55%.",
+        "vitals": {
+          "bp": "116/74 mmHg",
+          "hr": "64 bpm",
+          "creatinine": "0.8 mg/dL",
+          "eGFR": "75 mL/min"
+        },
+        "intervention": "Tapering ACE-inhibitor, maintained low-dose beta blocker for sympathetic modulation."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Carvedilol 6.25mg BID",
+        "Lisinopril 2.5mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Exogenous catecholamines (Epinephrine / Dopamine contraindicated)"
+      ],
+      "clinical_notes_raw": "Transient catecholaminergic neurocardiogenic stunning with complete myocardial recovery following short-term neurohormonal blockade."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-048",
+    "department": "Nephrology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 64,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Diabetic Nephropathy Stage 3b with CKD-Related Fluid Retention",
+    "comorbidities": [
+      "Type-2 Diabetes Mellitus",
+      "Hypertension",
+      "Gout"
+    ],
+    "allergies": [
+      "Penicillin"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Peripheral pitting edema (+2), nocturnal cough, eGFR 36 mL/min, creatinine 1.9 mg/dL.",
+        "vitals": {
+          "bp": "154/92 mmHg",
+          "hr": "78 bpm",
+          "creatinine": "1.9 mg/dL",
+          "eGFR": "36 mL/min",
+          "hba1c": "8.3%"
+        },
+        "intervention": "Bumetanide 1mg daily, Losartan 25mg daily, Febuxostat 40mg daily."
+      },
+      {
+        "day": 5,
+        "symptoms": "Edema resolved, breathing comfortably, renal values stable at eGFR 36.",
+        "vitals": {
+          "bp": "132/80 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "1.9 mg/dL",
+          "eGFR": "36 mL/min"
+        },
+        "intervention": "Maintained low-dose loop diuretic and ARB with strict serum potassium oversight."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Bumetanide 1mg OD",
+        "Losartan 25mg OD",
+        "Febuxostat 40mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Allopurinol (dose reduction needed, Febuxostat preferred with preserved hepatic clearance)",
+        "Metformin"
+      ],
+      "clinical_notes_raw": "Proteinuric diabetic renal disease complicated by recurrent hyperuricemia. Volume control established with bumetanide while febuxostat safely controlled urate without allopurinol hypersensitivity risks."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-049",
+    "department": "Nephrology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 56,
+      "gender": "Female"
+    },
+    "primary_diagnosis": "ANCA-Associated Vasculitis (Granulomatosis with Polyangiitis - Renal Limited)",
+    "comorbidities": [
+      "Hypertension",
+      "Sinusitis"
+    ],
+    "allergies": [
+      "Sulfa Drugs"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Rapidly progressive renal decline: creatinine 3.6 mg/dL from baseline 1.1. PR3-ANCA positive 120 IU/mL.",
+        "vitals": {
+          "bp": "152/94 mmHg",
+          "hr": "86 bpm",
+          "creatinine": "3.6 mg/dL",
+          "eGFR": "17 mL/min"
+        },
+        "intervention": "IV Methylprednisolone 500mg daily x 3 days, Rituximab 375 mg/m2 weekly infusion x 4."
+      },
+      {
+        "day": 14,
+        "symptoms": "Halt of renal decline: creatinine improved to 2.1 mg/dL. Microscopic hematuria clearing.",
+        "vitals": {
+          "bp": "134/82 mmHg",
+          "hr": "74 bpm",
+          "creatinine": "2.1 mg/dL",
+          "eGFR": "31 mL/min"
+        },
+        "intervention": "Oral Prednisone taper, Atovaquone for Pneumocystis jirovecii prophylaxis (avoiding Bactrim due to sulfa allergy)."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Rituximab 375 mg/m2",
+        "Prednisone (tapering)",
+        "Atovaquone 1500mg daily (PJP prophylaxis)"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Trimethoprim-Sulfamethoxazole (severe sulfa allergy)",
+        "Cyclophosphamide (avoided in favor of Rituximab)"
+      ],
+      "clinical_notes_raw": "Pauci-immune necrotizing crescentic glomerulonephritis. CD20 B-cell depletion via Rituximab induced rapid remission and salvaged kidney function."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-050",
+    "department": "Nephrology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 71,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Chronic Kidney Disease Stage 4 with Metabolic Acidosis",
+    "comorbidities": [
+      "Hypertension",
+      "Ischemic Heart Disease"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Generalized malaise, tachypnea, serum bicarbonate 15 mEq/L (acidotic).",
+        "vitals": {
+          "bp": "138/84 mmHg",
+          "hr": "80 bpm",
+          "creatinine": "3.4 mg/dL",
+          "eGFR": "19 mL/min"
+        },
+        "intervention": "Initiated Sodium Bicarbonate 650mg TID orally."
+      },
+      {
+        "day": 14,
+        "symptoms": "Bicarbonate normalized to 22 mEq/L, fatigue improved, muscle protein catabolism mitigated.",
+        "vitals": {
+          "bp": "134/80 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "3.2 mg/dL",
+          "eGFR": "20 mL/min"
+        },
+        "intervention": "Maintained oral alkali supplementation with sodium and volume monitoring."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Sodium Bicarbonate 650mg TID",
+        "Amlodipine 10mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Potassium citrate (risk of inducing hyperkalemia in CKD 4)"
+      ],
+      "clinical_notes_raw": "Chronic metabolic acidosis in pre-dialysis nephropathy corrected with oral bicarbonate to preserve remaining nephron mass and forestall uremic muscle wasting."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-051",
+    "department": "Nephrology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 44,
+      "gender": "Female"
+    },
+    "primary_diagnosis": "Minimal Change Disease in Adult Presenting with Full Nephrotic Syndrome",
+    "comorbidities": [
+      "Seasonal Allergic Rhinitis"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Sudden onset full-body edema, 24-hr urine protein 9.2 grams, serum albumin 1.8 g/dL.",
+        "vitals": {
+          "bp": "128/82 mmHg",
+          "hr": "76 bpm",
+          "creatinine": "1.0 mg/dL",
+          "eGFR": "82 mL/min"
+        },
+        "intervention": "Oral Prednisone 1 mg/kg/day (60mg daily), Pantoprazole 40mg daily."
+      },
+      {
+        "day": 21,
+        "symptoms": "Complete resolution of proteinuria (0.15 g/24h), serum albumin recovered to 3.8 g/dL. Edema gone.",
+        "vitals": {
+          "bp": "120/76 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "0.8 mg/dL",
+          "eGFR": "92 mL/min"
+        },
+        "intervention": "Commenced planned 16-week corticosteroid taper schedule."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Prednisone 60mg daily (tapering)",
+        "Pantoprazole 40mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "NSAIDs (risk of acute kidney injury and relapse)"
+      ],
+      "clinical_notes_raw": "Adult minimal change disease manifesting with profound podocytopathy. Highly steroid-sensitive with rapid complete biochemical remission."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-052",
+    "department": "Nephrology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 69,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Post-Renal Obstructive Uropathy with Hydronephrosis",
+    "comorbidities": [
+      "Prostatic Adenocarcinoma (T1c)",
+      "Hypertension"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Lower abdominal fullness, anuria for 12 hours. Bladder scan 950 mL. Creatinine 3.8 mg/dL.",
+        "vitals": {
+          "bp": "164/98 mmHg",
+          "hr": "88 bpm",
+          "creatinine": "3.8 mg/dL",
+          "eGFR": "16 mL/min"
+        },
+        "intervention": "Emergency Foley catheterization: 1200 mL drained immediately. Monitored for post-obstructive diuresis."
+      },
+      {
+        "day": 3,
+        "symptoms": "Post-obstructive polyuria managed with 0.45% Saline volume replacement. Creatinine dropped to 1.3 mg/dL.",
+        "vitals": {
+          "bp": "130/80 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "1.3 mg/dL",
+          "eGFR": "62 mL/min"
+        },
+        "intervention": "Arranged elective transurethral resection / urological stenting."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Bladder decompression catheter",
+        "Half-normal saline volume matching"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Anticholinergics (Oxybutynin contraindicated due to worsening urinary retention)"
+      ],
+      "clinical_notes_raw": "Acute post-renal azotemia completely reversed upon immediate relief of urinary tract outflow obstruction."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-053",
+    "department": "Nephrology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 63,
+      "gender": "Female"
+    },
+    "primary_diagnosis": "Drug-Induced Acute Interstitial Nephritis (AIN)",
+    "comorbidities": [
+      "Osteoarthritis",
+      "GERD"
+    ],
+    "allergies": [
+      "Omeprazole (AIN)",
+      "Amoxicillin"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Low-grade fever, maculopapular rash, eosinophiluria following Omeprazole treatment. Creatinine 2.8 mg/dL.",
+        "vitals": {
+          "bp": "136/82 mmHg",
+          "hr": "82 bpm",
+          "creatinine": "2.8 mg/dL",
+          "eGFR": "22 mL/min"
+        },
+        "intervention": "Immediately stopped Omeprazole, initiated oral Methylprednisolone 32mg daily."
+      },
+      {
+        "day": 10,
+        "symptoms": "Fever and rash subsided. Creatinine restored to baseline 1.1 mg/dL.",
+        "vitals": {
+          "bp": "124/76 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "1.1 mg/dL",
+          "eGFR": "58 mL/min"
+        },
+        "intervention": "Substituted PPI with Famotidine 20mg daily for acid suppression; tagged PPI allergy permanently."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Methylprednisolone 32mg OD (tapering)",
+        "Famotidine 20mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Proton Pump Inhibitors (class effect contraindication due to biopsy-proven AIN)"
+      ],
+      "clinical_notes_raw": "Proton pump inhibitor-induced tubulointerstitial inflammation resolved swiftly following culprit drug withdrawal and short steroid pulse."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-054",
+    "department": "Nephrology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 57,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Renal Transplant Recipient - Maintenance Immunosuppression Management",
+    "comorbidities": [
+      "End-Stage Renal Disease status-post deceased donor transplant (2 years)",
+      "Post-Transplant Hypertension"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Routine transplant clinic follow-up. Stable allograft function: creatinine 1.2 mg/dL. Tacrolimus trough 6.2 ng/mL.",
+        "vitals": {
+          "bp": "132/82 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "1.2 mg/dL",
+          "eGFR": "68 mL/min"
+        },
+        "intervention": "Maintained Tacrolimus 2mg BID, Mycophenolate Mofetil 750mg BID, Prednisone 5mg daily."
+      },
+      {
+        "day": 30,
+        "symptoms": "Zero rejection episodes, BK virus PCR negative, CMV PCR undetectable.",
+        "vitals": {
+          "bp": "128/80 mmHg",
+          "hr": "70 bpm",
+          "creatinine": "1.2 mg/dL",
+          "eGFR": "68 mL/min"
+        },
+        "intervention": "Continued standard triple immunosuppression regimen."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Tacrolimus 2mg BID",
+        "Mycophenolate Mofetil 750mg BID",
+        "Prednisone 5mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Grapefruit juice, St. John's Wort, Ketoconazole (uncontrolled CYP3A4 interactions)"
+      ],
+      "clinical_notes_raw": "Stable renal allograft maintained on target therapeutic calcineurin inhibitor blood levels with strict avoidance of CYP3A4 perturbing agents."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-055",
+    "department": "Endocrinology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 60,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Uncontrolled Type-2 Diabetes with Microvascular Complications",
+    "comorbidities": [
+      "Hypertension",
+      "Diabetic Neuropathy",
+      "CKD Stage 3 (eGFR 41)"
+    ],
+    "allergies": [
+      "Penicillin"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Tingling in feet, polyuria, HbA1c 9.5%, fasting blood sugar 225 mg/dL.",
+        "vitals": {
+          "bp": "144/88 mmHg",
+          "hr": "78 bpm",
+          "creatinine": "1.7 mg/dL",
+          "eGFR": "41 mL/min",
+          "hba1c": "9.5%"
+        },
+        "intervention": "Initiated Empagliflozin 10mg daily, Linagliptin 5mg daily, Pregabalin 50mg nightly."
+      },
+      {
+        "day": 14,
+        "symptoms": "Fasting blood sugar down to 134 mg/dL. Burning pain in feet improved by 60%.",
+        "vitals": {
+          "bp": "130/80 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "1.7 mg/dL",
+          "eGFR": "41 mL/min"
+        },
+        "intervention": "Maintained SGLT2i + DPP4i cardiorenal combination without renal adjustment requirement."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Empagliflozin 10mg OD",
+        "Linagliptin 5mg OD",
+        "Pregabalin 50mg nightly"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Metformin in full doses (dose reduction or withholding recommended as eGFR nears 30)"
+      ],
+      "clinical_notes_raw": "Diabetic triopathy under control with SGLT2 inhibitor and non-renally cleared DPP-4 inhibitor, protecting nephron filtration without causing hypoglycemia."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-056",
+    "department": "Endocrinology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 45,
+      "gender": "Female"
+    },
+    "primary_diagnosis": "Cushing's Disease (ACTH-Secreting Pituitary Microadenoma)",
+    "comorbidities": [
+      "Central Obesity",
+      "Hypertension",
+      "Secondary Amenorrhea"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Moon facies, buffalo hump, purple abdominal striae, 24-hr urinary free cortisol 320 mcg/day (elevated).",
+        "vitals": {
+          "bp": "158/96 mmHg",
+          "hr": "84 bpm",
+          "creatinine": "0.9 mg/dL",
+          "eGFR": "88 mL/min"
+        },
+        "intervention": "Initiated Ketoconazole 200mg TID (steroidogenesis inhibitor) bridging to pituitary surgery."
+      },
+      {
+        "day": 14,
+        "symptoms": "Urinary cortisol reduced to 95 mcg/day. Blood pressure improved to 136/84.",
+        "vitals": {
+          "bp": "136/84 mmHg",
+          "hr": "74 bpm",
+          "creatinine": "0.9 mg/dL",
+          "eGFR": "88 mL/min"
+        },
+        "intervention": "Scheduled endonasal transsphenoidal pituitary microadenomectomy."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Ketoconazole 200mg TID",
+        "Spironolactone 50mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Metyrapone if severe hirsutism (Ketoconazole preferred in female due to antiandrogenic effect)"
+      ],
+      "clinical_notes_raw": "Hypercortisolemia medically controlled prior to definitive sellar surgery, lowering perioperative morbidity."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-057",
+    "department": "Endocrinology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 58,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Primary Hyperaldosteronism (Conn's Syndrome)",
+    "comorbidities": [
+      "Refractory Hypertension",
+      "Hypokalemia"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Persistent muscle cramps, resistant BP on 4 drugs. Serum potassium 2.9 mEq/L, Aldosterone-to-Renin Ratio 48.",
+        "vitals": {
+          "bp": "172/102 mmHg",
+          "hr": "76 bpm",
+          "creatinine": "1.1 mg/dL",
+          "eGFR": "76 mL/min"
+        },
+        "intervention": "Spironolactone 100mg daily, Potassium Chloride 20 mEq BID, adrenal CT scheduled."
+      },
+      {
+        "day": 10,
+        "symptoms": "Muscle cramps resolved, potassium normalized to 4.4 mEq/L. Blood pressure lowered to 134/82 mmHg.",
+        "vitals": {
+          "bp": "134/82 mmHg",
+          "hr": "70 bpm",
+          "creatinine": "1.1 mg/dL",
+          "eGFR": "76 mL/min"
+        },
+        "intervention": "CT showed left adrenal 1.4cm nodule; patient opted for medical therapy over surgery."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Spironolactone 100mg OD",
+        "Amlodipine 5mg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Thiazide diuretics (exacerbate severe hypokalemia in hyperaldosteronism)"
+      ],
+      "clinical_notes_raw": "Mineralocorticoid excess syndrome responsive to competitive aldosterone receptor blockade, restoring normokalemia and normotension."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-058",
+    "department": "Endocrinology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 36,
+      "gender": "Female"
+    },
+    "primary_diagnosis": "Postpartum Thyroiditis - Transient Hypothyroid Phase",
+    "comorbidities": [
+      "Postpartum 4 Months"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Profound fatigue, mood changes, milk supply reduction. TSH 18.2 mIU/L, Free T4 0.6 ng/dL.",
+        "vitals": {
+          "bp": "108/70 mmHg",
+          "hr": "58 bpm",
+          "creatinine": "0.7 mg/dL",
+          "eGFR": "105 mL/min"
+        },
+        "intervention": "Levothyroxine 50 mcg daily, plan for reassessment in 6 months for recovery."
+      },
+      {
+        "day": 28,
+        "symptoms": "Fatigue alleviated, nursing well, mood stabilized. TSH down to 2.4 mIU/L.",
+        "vitals": {
+          "bp": "114/74 mmHg",
+          "hr": "68 bpm",
+          "creatinine": "0.7 mg/dL",
+          "eGFR": "105 mL/min"
+        },
+        "intervention": "Maintained low-dose replacement with planned trial of discontinuation at 1 year postpartum."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Levothyroxine 50mcg OD"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Antithyroid drugs (Methimazole contraindicated in hypothyroid destructive thyroiditis)"
+      ],
+      "clinical_notes_raw": "Transient lymphocytic thyroiditis following childbirth safely bridged with physiological levothyroxine replacement."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-059",
+    "department": "Endocrinology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 52,
+      "gender": "Male"
+    },
+    "primary_diagnosis": "Hyperuricemia and Severe Tophaceous Gout in Renal Insufficiency",
+    "comorbidities": [
+      "CKD Stage 3a",
+      "Hypertension",
+      "Dyslipidemia"
+    ],
+    "allergies": [
+      "Allopurinol (HLA-B*5801 positive / severe rash)"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Exquisite pain and swelling in 1st metatarsophalangeal joint and olecranon bursa tophi. Serum urate 10.4 mg/dL.",
+        "vitals": {
+          "bp": "142/86 mmHg",
+          "hr": "80 bpm",
+          "creatinine": "1.6 mg/dL",
+          "eGFR": "50 mL/min"
+        },
+        "intervention": "Colchicine 0.5mg OD (dose adjusted for renal clearance), Febuxostat 40mg daily."
+      },
+      {
+        "day": 14,
+        "symptoms": "Acute flare resolved, serum uric acid dropped to 5.2 mg/dL (below 6.0 target).",
+        "vitals": {
+          "bp": "128/80 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "1.5 mg/dL",
+          "eGFR": "52 mL/min"
+        },
+        "intervention": "Maintained Febuxostat and renal-dosed Colchicine flare prophylaxis for 6 months."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Febuxostat 40mg OD",
+        "Colchicine 0.5mg OD (dose adjusted)"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Allopurinol (HLA-B*5801 allele present - risk of fatal DRESS syndrome)",
+        "Indomethacin / NSAIDs"
+      ],
+      "clinical_notes_raw": "Tophaceous gout in allopurinol-contraindicated renal patient treated effectively with non-purine xanthine oxidase inhibitor Febuxostat."
+    }
+  },
+  {
+    "hospital_id": "Hospital_C",
+    "patient_id": "DEMO-060",
+    "department": "Endocrinology",
+    "attending_physician": "Synthetic Clinician",
+    "demographics": {
+      "age": 67,
+      "gender": "Female"
+    },
+    "primary_diagnosis": "Secondary Hyperparathyroidism of Renal Origin with Adynamic Bone Risk",
+    "comorbidities": [
+      "CKD Stage 4",
+      "Hypertension",
+      "Vascular Calcification"
+    ],
+    "allergies": [
+      "No Known Drug Allergies"
+    ],
+    "longitudinal_timeline": [
+      {
+        "day": 1,
+        "symptoms": "Serum Calcium 9.6 mg/dL, Phosphorus 5.8 mg/dL, intact PTH 380 pg/mL.",
+        "vitals": {
+          "bp": "138/84 mmHg",
+          "hr": "72 bpm",
+          "creatinine": "2.8 mg/dL",
+          "eGFR": "23 mL/min"
+        },
+        "intervention": "Lanthanum carbonate 500mg TID with meals, Paricalcitol 1 mcg three times weekly."
+      },
+      {
+        "day": 21,
+        "symptoms": "Phosphorus controlled to 4.2 mg/dL, PTH lowered to 160 pg/mL without hypercalcemia.",
+        "vitals": {
+          "bp": "130/80 mmHg",
+          "hr": "70 bpm",
+          "creatinine": "2.7 mg/dL",
+          "eGFR": "24 mL/min"
+        },
+        "intervention": "Continued selective vitamin D receptor activator Paricalcitol to minimize hypercalcemic risk."
+      }
+    ],
+    "treatment_outcome": {
+      "status": "Improved",
+      "effective_medications": [
+        "Lanthanum carbonate 500mg TID",
+        "Paricalcitol 1mcg 3x/week"
+      ],
+      "adverse_or_contraindicated_drugs": [
+        "Calcium carbonate megadoses (promotes vascular and valvular calcification)"
+      ],
+      "clinical_notes_raw": "Renal osteodystrophy management using non-calcium phosphate chelator and selective VDR activator, avoiding cardiovascular calcification."
+    }
+  }
+]
