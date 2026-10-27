@@ -5,10 +5,10 @@ Fed-AgentGEO is a research demonstration of federated retrieval over three demo 
 ## Public demo safety
 
 - Bundled case records are de-identified demonstration examples with generic case IDs and clinician labels. Their synthetic status has not been independently verified; treat them as potentially sensitive.
-- Clinical-record upload and ingestion are disabled in this public build.
+- Patient entry adds fictional or de-identified cases to the public demo's hospital case store and search index, where other visitors may see or retrieve them. File uploads are disabled.
 - Do not enter real patient information. Queries are processed by the public hosted app.
 - Results are for research demonstration only. They are not medical advice and must not guide patient care.
-- This demo has no user authentication and is not designed to store or process protected health information.
+- This demo has no user authentication and is not designed to store or process protected health information. Hosted storage may be temporary and can reset when the app restarts.
 
 ## Run locally
 

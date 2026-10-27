@@ -4,12 +4,13 @@ with Generative Engine Optimization (GEO) & Explainable AI (XAI)
 
 Professional, Fully Interactive Streamlit Interface (app.py)
 No pre-filled or hardcoded inputs/outputs.
-Interactive search, file ingestion, custom data entry, and live federated retrieval.
+Interactive search, demo case entry, and live federated retrieval.
 """
 
 import os
 import json
 import time
+import uuid
 from pathlib import Path
 import streamlit as st
 import pandas as pd
@@ -378,7 +379,7 @@ with top_col2:
 st.warning("Public demo with de-identified example cases. Their synthetic status has not been independently verified. Do not enter real patient information. Outputs are for research demonstration and are not medical advice or a substitute for professional care.")
 tab_board, tab_ingest, tab_vault = st.tabs([
     "🤝 Tab 1: Federated Consultation & Clinical Board",
-    "📥 Tab 2: Ingestion Disabled (Public Demo)",
+    "📥 Tab 2: Patient Entry (Demo Only)",
     "🏛️ Tab 3: Local GEO Knowledge Vault (Audit)"
 ])
 
@@ -696,7 +697,84 @@ with tab_board:
 # TAB 2: CLINICAL INGESTION PORTAL (DOCTOR CASE ENTRY)
 # ==============================================================================
 with tab_ingest:
-    st.info("Clinical-record ingestion is disabled in this public demo. Do not upload or enter real patient records.")
+    st.markdown("<h4 style='margin: 0 0 6px 0; font-weight: 700;'>Add a Patient Case to the Demo Index</h4>", unsafe_allow_html=True)
+    st.info("Demo only. Add fictional or de-identified cases. Submitted cases are saved to this public demo's hospital case store and search index, where other visitors may see or retrieve them. Never enter real patient information.")
+
+    with st.form("demo_patient_entry"):
+        st.markdown("**Patient profile**")
+        profile_cols = st.columns(4)
+        with profile_cols[0]:
+            demo_age = st.number_input("Age", min_value=0, max_value=115, value=0, key="demo_age")
+        with profile_cols[1]:
+            demo_gender = st.selectbox("Gender", ["Select", "Female", "Male", "Other"], key="demo_gender")
+        with profile_cols[2]:
+            demo_department = st.selectbox("Department", ["Cardiology", "Nephrology", "Endocrinology", "Internal Medicine"], key="demo_department")
+        with profile_cols[3]:
+            demo_outcome = st.selectbox("Outcome", ["Improved", "Stable", "Unresponsive", "Adverse Reaction"], key="demo_outcome")
+
+        demo_diagnosis = st.text_input("Primary diagnosis", placeholder="Example: Stage 3 chronic kidney disease", key="demo_diagnosis")
+        demo_comorbidities = st.text_input("Comorbidities", placeholder="Separate entries with commas", key="demo_comorbidities")
+        demo_allergies = st.text_input("Allergies", placeholder="Separate entries with commas", key="demo_allergies")
+
+        st.markdown("**Initial observations (optional)**")
+        vitals_cols = st.columns(4)
+        with vitals_cols[0]:
+            demo_bp = st.text_input("Blood pressure", placeholder="128/78 mmHg", key="demo_bp")
+        with vitals_cols[1]:
+            demo_hr = st.text_input("Heart rate", placeholder="72 bpm", key="demo_hr")
+        with vitals_cols[2]:
+            demo_creatinine = st.text_input("Creatinine", placeholder="1.1 mg/dL", key="demo_creatinine")
+        with vitals_cols[3]:
+            demo_egfr = st.text_input("eGFR", placeholder="68 mL/min", key="demo_egfr")
+
+        demo_symptoms = st.text_input("Symptoms", placeholder="Describe the presentation", key="demo_symptoms")
+        demo_intervention = st.text_input("Interventions or medications", placeholder="Separate entries with commas", key="demo_intervention")
+        demo_effective = st.text_input("Effective medications", placeholder="Separate entries with commas", key="demo_effective")
+        demo_contraindicated = st.text_input("Withheld or contraindicated medications", placeholder="Separate entries with commas", key="demo_contraindicated")
+        demo_notes = st.text_area("Clinical narrative", placeholder="Enter a fictional clinical summary", height=110, key="demo_notes")
+        preview_clicked = st.form_submit_button("Add case to demo index", type="primary", use_container_width=True)
+
+    if preview_clicked:
+        st.session_state.pop("demo_optimization_preview", None)
+        if demo_age < 1 or demo_gender == "Select" or not demo_diagnosis.strip() or not demo_notes.strip():
+            st.warning("Enter an age, gender, primary diagnosis, and clinical narrative to create a preview.")
+        else:
+            case_preview = {
+                "patient_id": f"DEMO-USER-{uuid.uuid4().hex[:10].upper()}",
+                "hospital_id": st.session_state.active_hospital,
+                "department": demo_department,
+                "demographics": {"age": int(demo_age), "gender": demo_gender},
+                "primary_diagnosis": demo_diagnosis.strip(),
+                "comorbidities": [item.strip() for item in demo_comorbidities.split(",") if item.strip()],
+                "allergies": [item.strip() for item in demo_allergies.split(",") if item.strip()],
+                "longitudinal_timeline": [{
+                    "day": 1,
+                    "symptoms": demo_symptoms,
+                    "vitals": {"bp": demo_bp, "hr": demo_hr, "creatinine": demo_creatinine, "eGFR": demo_egfr},
+                    "intervention": demo_intervention,
+                }],
+                "treatment_outcome": {
+                    "status": demo_outcome,
+                    "effective_medications": [item.strip() for item in demo_effective.split(",") if item.strip()],
+                    "adverse_or_contraindicated_drugs": [item.strip() for item in demo_contraindicated.split(",") if item.strip()],
+                    "clinical_notes_raw": demo_notes.strip(),
+                },
+            }
+            preview_result = current_node.ingest_patient_case(case_preview)
+            preview_result.pop("original_raw_text", None)
+            st.session_state.demo_optimization_preview = preview_result
+
+    preview_result = st.session_state.get("demo_optimization_preview")
+    if preview_result:
+        st.success("Case added to the selected hospital's demo case store and search index.")
+        result_cols = st.columns(3)
+        result_cols[0].metric("Raw SNR", f"{preview_result['raw_snr']:.3f}")
+        result_cols[1].metric("Optimized SNR", f"{preview_result['optimized_snr']:.3f}", f"+{preview_result['improvement_pct']}%")
+        result_cols[2].metric("Repairs applied", len(preview_result["repairs_applied"]))
+        st.markdown(f"**Diagnosed issues:** {', '.join(preview_result['diagnosed_flaws']) or 'None'}")
+        st.markdown(f"**Repairs:** {', '.join(preview_result['repairs_applied'])}")
+        with st.expander("View optimized evidence preview", expanded=True):
+            st.code(preview_result["optimized_evidence_chunk"], language="markdown")
 
 # ==============================================================================
 # TAB 3: LOCAL GEO KNOWLEDGE VAULT
